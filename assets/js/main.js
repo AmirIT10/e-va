@@ -17,44 +17,97 @@ window.addEventListener('load', () => {
     }
 });
 
-// const container = document.getElementById('card-container');
-
-// // گرفتن عرض کارت (با حاشیه)
-// const card = container.querySelector('.col-lg-3') || container.querySelector('.col-10');
-// const cardStyle = getComputedStyle(card);
-// const cardMargin = parseFloat(cardStyle.marginLeft) + parseFloat(cardStyle.marginRight);
-// const cardWidth = card.offsetWidth + cardMargin;
-
-// let direction = -1; // -1 یعنی اسکرول به چپ (در حالت rtl)
-// const delay = 3000;
-
-// setInterval(() => {
-//     const currentScroll = container.scrollLeft;
-//     const maxScroll = container.scrollWidth - container.clientWidth;
-
-//     // در حالت rtl، ابتدای محتوا = scrollLeft حداکثر مقدار (مثلاً 1000)، انتها = 0
-//     if (currentScroll <= 0) {
-//         direction = 1; // به راست برگرد
-//     } else if (currentScroll >= maxScroll) {
-//         direction = -1; // به چپ ادامه بده
-//     }
-
-//     container.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
-// }, delay);
-
 const container = document.getElementById('card-container');
-const button = document.getElementById('scroll-next');
 
-// پیدا کردن عرض یک کارت
-const card = container.querySelector('.card');
-const cardStyle = getComputedStyle(card);
-const cardMargin = parseFloat(cardStyle.marginLeft) + parseFloat(cardStyle.marginRight);
-const cardWidth = card.offsetWidth + cardMargin;
+if (container) {
+    // گرفتن عرض کارت (با حاشیه)
+    const card = container.querySelector('.col-lg-3') || container.querySelector('.col-10');
+    
+    if (card) {
+        const cardStyle = getComputedStyle(card);
+        const cardMargin = parseFloat(cardStyle.marginLeft) + parseFloat(cardStyle.marginRight);
+        const cardWidth = card.offsetWidth + cardMargin;
+        
+        // تشخیص جهت زبان سایت
+        const isRTL = document.documentElement.dir === 'rtl' || 
+                      document.body.dir === 'rtl' || 
+                      getComputedStyle(document.body).direction === 'rtl';
 
-// کلیک روی دکمه → اسکرول به اندازه یک کارت
-button.addEventListener('click', () => {
-  container.scrollBy({ left: -cardWidth, behavior: 'smooth' }); // منفی چون RTL
-});
+        let direction = isRTL ? 1 : -1;
+        const delay = 3000;
+        let autoScrollInterval = null;
+
+        // تابع برای بررسی اندازه صفحه
+        const checkScreenSize = () => {
+            return window.innerWidth < 992; // lg breakpoint
+        };
+
+        // تابع برای شروع اسکرول
+        const startScroll = () => {
+            if (checkScreenSize() && !autoScrollInterval) {
+                autoScrollInterval = setInterval(() => {
+                    const currentScroll = container.scrollLeft;
+                    const maxScroll = container.scrollWidth - container.clientWidth;
+                    
+                    if (isRTL) {
+                        // در حالت RTL
+                        if (currentScroll <= 0) {
+                            direction = -1;
+                        } else if (currentScroll >= maxScroll) {
+                            direction = 1;
+                        }
+                    } else {
+                        // در حالت LTR
+                        if (currentScroll >= maxScroll) {
+                            direction = 1;
+                        } else if (currentScroll <= 0) {
+                            direction = -1;
+                        }
+                    }
+
+                    container.scrollBy({ 
+                        left: direction * cardWidth, 
+                        behavior: 'smooth' 
+                    });
+                }, delay);
+            }
+        };
+
+        // تابع برای توقف اسکرول
+        const stopScroll = () => {
+            if (autoScrollInterval) {
+                clearInterval(autoScrollInterval);
+                autoScrollInterval = null;
+            }
+        };
+
+        // شروع اسکرول در صورت مناسب بودن سایز صفحه
+        if (checkScreenSize()) {
+            startScroll();
+        }
+
+        // توقف اسکرول با هاور موس
+        container.addEventListener('mouseenter', stopScroll);
+
+        // شروع مجدد اسکرول با خروج موس (فقط در صورت مناسب بودن سایز صفحه)
+        container.addEventListener('mouseleave', () => {
+            if (checkScreenSize()) {
+                startScroll();
+            }
+        });
+
+        // بررسی تغییر سایز صفحه
+        window.addEventListener('resize', () => {
+            if (checkScreenSize()) {
+                startScroll();
+            } else {
+                stopScroll();
+                // ریست کردن اسکرول به ابتدا
+                container.scrollTo({ left: 0, behavior: 'smooth' });
+            }
+        });
+    }
+}
 
 // Smooth Scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
