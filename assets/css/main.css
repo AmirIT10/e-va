@@ -333,7 +333,7 @@ body {
     z-index: 3;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    
+
 }
 
 .floating-card i {
@@ -355,7 +355,7 @@ body {
 
 .card-3 {
     bottom: 30%;
-    left:-60%;
+    left: -60%;
     animation: float 3s ease-in-out infinite 1s;
 }
 
@@ -748,7 +748,7 @@ a:focus-visible {
     .feature-card:hover {
         transform: none;
     }
-    
+
     .feature-card:active {
         transform: translateY(-2px);
     }
@@ -1285,40 +1285,40 @@ a:focus-visible {
         line-height: 1.3;
         text-align: center !important;
     }
-    
+
     .hero-text {
         font-size: 0.875rem !important;
         text-align: center;
     }
-    
+
     .hero-buttons {
         flex-direction: column;
         width: 100%;
     }
-    
+
     .hero-buttons .btn {
         width: 100%;
         margin-bottom: 0.5rem;
         padding: 0.75rem 1.5rem;
         justify-content: center;
     }
-    
+
     .hero-stats {
         flex-wrap: wrap;
         justify-content: center;
         gap: 1.5rem;
         padding: 1.5rem 0;
     }
-    
+
     .hero-stat {
         flex: 0 0 calc(50% - 1rem);
         text-align: center;
     }
-    
+
     .stat-number {
         font-size: 1.75rem;
     }
-    
+
     .stat-label {
         font-size: 0.8rem;
     }
@@ -1328,15 +1328,15 @@ a:focus-visible {
     .hero-title {
         font-size: 2.25rem !important;
     }
-    
+
     .hero-text {
         font-size: 1rem !important;
     }
-    
+
     .hero-stats {
         gap: 2rem;
     }
-    
+
     .stat-number {
         font-size: 2rem;
     }
@@ -1354,34 +1354,34 @@ a:focus-visible {
     .feature-card {
         margin-bottom: 1rem;
     }
-    
+
     .feature-card .card-body {
         padding: 1rem;
     }
-    
+
     section#features {
         padding-top: 2rem;
         padding-bottom: 2rem;
     }
-    
+
     section#features .text-center h2 {
         font-size: 1.75rem;
     }
-    
+
     section#features .text-center p {
         font-size: 0.875rem;
     }
 }
 
 /* Fix spacing in row cols */
-.row-cols-1 > * {
+.row-cols-1>* {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
     margin-bottom: 1.5rem;
 }
 
 @media (min-width: 768px) {
-    .row-cols-md-2 > * {
+    .row-cols-md-2>* {
         padding-left: 0.75rem;
         padding-right: 0.75rem;
         margin-bottom: 1.5rem;
@@ -1389,7 +1389,7 @@ a:focus-visible {
 }
 
 @media (min-width: 992px) {
-    .row-cols-lg-3 > * {
+    .row-cols-lg-3>* {
         padding-left: 1rem;
         padding-right: 1rem;
         margin-bottom: 2rem;
@@ -1402,49 +1402,49 @@ a:focus-visible {
         padding-left: 1.25rem;
         padding-right: 1.25rem;
     }
-    
+
     .feature-card {
         padding: 1rem;
     }
-    
+
     .feature-icon {
         width: 40px;
         height: 40px;
     }
-    
+
     .feature-icon img {
         width: 20px;
         height: 20px;
     }
-    
+
     .hero-title {
         font-size: 1.5rem !important;
     }
-    
+
     .badge {
         padding: 0.35rem 0.75rem;
         font-size: 0.75rem;
     }
-    
+
     section {
         padding: 1.5rem 0;
     }
-    
+
     .py-3 {
         padding-top: 1rem !important;
         padding-bottom: 1rem !important;
     }
-    
+
     .mb-3 {
         margin-bottom: 0.75rem !important;
     }
-    
+
     .g-3 {
         --bs-gutter-x: 0.75rem;
         --bs-gutter-y: 0.75rem;
     }
-    
-    .row > * {
+
+    .row>* {
         padding-right: calc(var(--bs-gutter-x) * 0.5);
         padding-left: calc(var(--bs-gutter-x) * 0.5);
     }
@@ -1455,11 +1455,11 @@ a:focus-visible {
     .feature-card {
         padding: 1.25rem;
     }
-    
+
     .hero-buttons .btn {
         padding: 0.75rem 1.5rem;
     }
-    
+
     section {
         padding: 2rem 0;
     }
@@ -1471,27 +1471,27 @@ a:focus-visible {
         margin-bottom: 1rem;
         border-radius: 10px;
     }
-    
+
     .card-body {
         padding: 1rem;
     }
-    
+
     .feature-card h3 {
         font-size: 1rem;
         margin-bottom: 0.5rem;
     }
-    
+
     .feature-card p {
         margin-bottom: 0;
         font-size: 0.8125rem;
         line-height: 1.4;
     }
-    
+
     /* Fix animation delay on mobile for better performance */
     [data-aos-delay] {
         transition-delay: 0s !important;
     }
-    
+
     /* Optimize AOS animations for mobile */
     [data-aos="fade-up"] {
         transform: translateY(10px);
@@ -1500,28 +1500,28 @@ a:focus-visible {
 
 /* Fix Spacing on Tablet Portrait */
 @media (min-width: 768px) and (max-width: 991.98px) {
-    .row-cols-md-2 > * {
+    .row-cols-md-2>* {
         margin-bottom: 1.25rem;
     }
-    
+
     .feature-card h3 {
         font-size: 1.125rem;
     }
-    
+
     .feature-card p {
         font-size: 0.875rem;
         line-height: 1.5;
     }
-    
+
     .hero-buttons .btn {
         padding: 0.75rem 1.5rem;
         font-size: 0.9375rem;
     }
-    
+
     .hero-section {
         padding: 5rem 0 3rem;
     }
-    
+
     section#features {
         padding: 3rem 0;
     }
@@ -1533,11 +1533,11 @@ a:focus-visible {
         transform: translateY(-3px);
         transition: transform 0.2s ease;
     }
-    
+
     .btn:active {
         transform: translateY(1px);
     }
-    
+
     a:active {
         opacity: 0.8;
         transition: opacity 0.2s ease;
@@ -1584,15 +1584,15 @@ a:focus-visible {
 /* Improved Card Borders */
 .feature-card {
     border: 1px solid rgba(0, 0, 0, 0.06);
-    box-shadow: 
+    box-shadow:
         0 5px 15px rgba(0, 0, 0, 0.05),
         0 3px 8px rgba(0, 0, 0, 0.03);
     background: linear-gradient(to bottom, #ffffff, #fafafa);
 }
 
 .feature-card:hover {
-    box-shadow: 
-        0 15px 30px rgba(0, 0, 0, 0.1), 
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, 0.1),
         0 8px 20px rgba(0, 0, 0, 0.06);
     border-color: rgba(var(--primary-color-rgb), 0.1);
     background: linear-gradient(to bottom, #ffffff, #f8f9fa);
@@ -1622,29 +1622,33 @@ a:focus-visible {
     .feature-card {
         box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
     }
-    
+
     .feature-card:hover {
         box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
     }
 }
 
 #card-container {
-  display: flex;
-  flex-wrap: wrap; /* کارت‌ها روی دسکتاپ بپیچند */
-  overflow-x: visible; /* اسکرول افقی خاموش */
-  gap: 1rem;
-  scroll-behavior: smooth;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-x: visible;
+    gap: 1rem;
+    scroll-behavior: smooth;
+    direction: rtl;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    white-space: nowrap;
 }
 
-/* وقتی صفحه کوچکتر از 768 پیکسل است: */
+
 @media (max-width: 768px) {
-  #card-container {
-    flex-wrap: nowrap; /* کارت‌ها کنار هم و تک خط */
-    overflow-x: auto; /* اسکرول افقی فعال */
-  }
-  
-  #card-container > div {
-    flex-shrink: 0; /* کارت‌ها جمع نشوند */
-    width: 80vw; /* عرض کارت‌ها برای موبایل */
-  }
+    #card-container {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+    }
+
+    #card-container>div {
+        flex-shrink: 0;
+        width: 80vw;
+    }
 }

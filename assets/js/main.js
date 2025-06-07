@@ -17,26 +17,44 @@ window.addEventListener('load', () => {
     }
 });
 
+// const container = document.getElementById('card-container');
+
+// // گرفتن عرض کارت (با حاشیه)
+// const card = container.querySelector('.col-lg-3') || container.querySelector('.col-10');
+// const cardStyle = getComputedStyle(card);
+// const cardMargin = parseFloat(cardStyle.marginLeft) + parseFloat(cardStyle.marginRight);
+// const cardWidth = card.offsetWidth + cardMargin;
+
+// let direction = -1; // -1 یعنی اسکرول به چپ (در حالت rtl)
+// const delay = 3000;
+
+// setInterval(() => {
+//     const currentScroll = container.scrollLeft;
+//     const maxScroll = container.scrollWidth - container.clientWidth;
+
+//     // در حالت rtl، ابتدای محتوا = scrollLeft حداکثر مقدار (مثلاً 1000)، انتها = 0
+//     if (currentScroll <= 0) {
+//         direction = 1; // به راست برگرد
+//     } else if (currentScroll >= maxScroll) {
+//         direction = -1; // به چپ ادامه بده
+//     }
+
+//     container.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
+// }, delay);
+
 const container = document.getElementById('card-container');
+const button = document.getElementById('scroll-next');
 
-// چون کلاس‌های بوت‌استرپ و استایل‌های متفاوت داری، عرض هر کارت رو داینامیک حساب می‌کنیم:
-const card = container.querySelector('.col-lg-3') || container.querySelector('.col-10');
+// پیدا کردن عرض یک کارت
+const card = container.querySelector('.card');
 const cardStyle = getComputedStyle(card);
-const cardMarginRight = parseFloat(cardStyle.marginRight) || 0;
-const cardWidth = card.offsetWidth + cardMarginRight;
+const cardMargin = parseFloat(cardStyle.marginLeft) + parseFloat(cardStyle.marginRight);
+const cardWidth = card.offsetWidth + cardMargin;
 
-const delay = 3000; // 3 ثانیه
-
-setInterval(() => {
-    // اگر اسکرول به انتهای محتوا رسید، برگرد اول
-    if (container.scrollLeft + container.clientWidth >= container.scrollWidth) {
-        container.scrollTo({ left: 0, behavior: 'smooth' });
-    } else {
-        // اسکرول به جلو به اندازه عرض یک کارت (عرض + فاصله)
-        container.scrollBy({ left: cardWidth, behavior: 'smooth' });
-    }
-}, delay);
-
+// کلیک روی دکمه → اسکرول به اندازه یک کارت
+button.addEventListener('click', () => {
+  container.scrollBy({ left: -cardWidth, behavior: 'smooth' }); // منفی چون RTL
+});
 
 // Smooth Scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
